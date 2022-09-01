@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h1>用户输入：</h1>
+    <form action="/index/" method="post">
+        {% csrf_token %}   <!--加入这行 -->
+        输入你感兴趣的导师名字：（如果有多个请用'，'隔开）<input type="text" name="tutorname" /><br />
+        研究方向：<input type="text" name="area" /><br />
+        (研究方向从
+            1.网络计算
+            2.数据科学
+            3.机器学习与知识工程
+            4.智能系统与应用
+            5.计算机软件与理论
+            6.影像科学与图像处理
+        当中选择一个填入）
+        <input type="submit" value="提交" />
+    </form>
+
+    <h1>您的推荐导师：</h1>
+     {% for item in data %}
+        <tr>
+            <td>{{ item }}</td>
+        </tr><br/>
+     {% endfor %}
+
+</body>
+</html>
+
